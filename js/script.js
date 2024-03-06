@@ -13,14 +13,21 @@ let finalPrice;
 
 console.log(userAge, userKm, discount);
 
-if (userAge < 18) {
-    discount = price * 0.2;
-} else if (userAge > 65) {
-    discount = price * 0.4;
-} 
+if ((!isNaN(userAge)) && (!isNaN(userKm))){
+    if (userAge < 18) {
+        discount = price * 0.2;
+    } else if (userAge > 65) {
+        discount = price * 0.4;
+    } 
+    finalPrice= price - discount;
+    console.log(finalPrice.toFixed(2));
+    document.getElementById("train-price").innerHTML = `${finalPrice.toFixed(2)} €`;
+
+} else{
+    document.getElementById("train-price").innerHTML = `ERRORE - Inserire valori numerici`;
+}
+
+
 
 console.log(discount);
 
-finalPrice= price - discount;
-console.log(finalPrice.toFixed(2));
- document.getElementById("train-price").innerHTML = `${finalPrice.toFixed(2)} €`;
