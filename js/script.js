@@ -7,27 +7,21 @@ L'output del prezzo finale va messo fuori in forma umana (con massimo due decima
 
 let userAge = parseInt(prompt("Quanti anni hai?"));
 let userKm = parseInt(prompt("Quanti chilometri vuoi percorrere?"));
-let price = userKm * 0.21;
+const pricekm = 0.21;
+const discount18 = 0.2;
+const discount65 = 0.4;
+let price = userKm * pricekm;
 let discount = 0;
 let finalPrice;
 
-console.log(userAge, userKm, discount);
-
 if ((!isNaN(userAge)) && (!isNaN(userKm))){
     if (userAge < 18) {
-        discount = price * 0.2;
-    } else if (userAge > 65) {
-        discount = price * 0.4;
+        discount = price * discount18;
+    } else if (userAge >= 65) {
+        discount = price * discount65;
     } 
     finalPrice= price - discount;
-    console.log(finalPrice.toFixed(2));
     document.getElementById("train-price").innerHTML = `${finalPrice.toFixed(2)} €`;
-
 } else{
     document.getElementById("train-price").innerHTML = `ERRORE - Inserire valori numerici`;
 }
-
-
-
-console.log(discount);
-
